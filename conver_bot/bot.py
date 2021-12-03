@@ -35,6 +35,10 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+load_dotenv(find_dotenv())
+name = 'TOKEN'
+my_token = os.environ.get(name)
+
 GENDER, PHOTO, LOCATION, BIO = range(4)
 
 
@@ -139,8 +143,7 @@ def cancel(update: Update, context: CallbackContext) -> int:
 def main() -> None:
     """Run the bot."""
     # Create the Updater and pass it your bot's token.
-    load_dotenv(find_dotenv())
-    updater = Updater(os.getenv("TOKEN"))
+    updater = Updater(my_token)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
